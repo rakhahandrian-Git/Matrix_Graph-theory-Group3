@@ -188,22 +188,6 @@ function setupEventListeners() {
     });
   }
 
-  document.querySelectorAll(".header-badges .badge").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const action = btn.dataset.action;
-      if (action === "tab-adj") {
-        switchToTab("tabAdjacency");
-      } else if (action === "toggle-tree") {
-        const treeBtn = document.getElementById("btnToggleTree");
-        if (treeBtn) treeBtn.click();
-      } else if (action === "tab-cycle") {
-        switchToTab("tabCycle");
-      } else if (action === "tab-cutset") {
-        switchToTab("tabCutset");
-      }
-    });
-  });
-
   document.getElementById("btnExportPng").addEventListener("click", exportGraphPng);
   document.getElementById("btnExportLatex").addEventListener("click", exportLatexModal);
 }
