@@ -1,4 +1,4 @@
-# Matrix_GraphTheory_Group3
+# Informatics ITS Graph Theory IUP
 
 ## Group 1 Assignment 5
 
