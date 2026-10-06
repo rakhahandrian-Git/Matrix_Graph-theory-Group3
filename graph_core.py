@@ -384,15 +384,15 @@ class Graph:
         }
 
     def compute_all_minimal_cutsets(self) -> Dict[str, Any]:
-        r"""
+        """
         Enumerates all minimal cut-sets of the graph (as shown in Slide 10: c1, c2, ...).
-        A minimal cut-set is an edge cut (S, V\S) where both G[S] and G[V\S] are connected.
+        A minimal cut-set is an edge cut (S, V - S) where both G[S] and G[V - S] are connected.
         """
         n = len(self.vertices)
         if n <= 1:
             return {'columns': [e['id'] for e in self.edges], 'cut_names': [], 'cutsets': [], 'matrix': []}
 
-        # Subsets of vertices containing vertex 0 to avoid duplicates (S and V\S)
+        # Subsets of vertices containing vertex 0 to avoid duplicates (S and V - S)
         all_v = set(self.vertices)
         v0 = self.vertices[0]
         other_v = self.vertices[1:]
@@ -430,7 +430,7 @@ class Graph:
                 if not vs:
                     continue
 
-                # Check if G[S] and G[V\S] are connected
+                # Check if G[S] and G[V - S] are connected
                 if is_connected_subgraph(s) and is_connected_subgraph(vs):
                     # Cut edges
                     cut_edges = []

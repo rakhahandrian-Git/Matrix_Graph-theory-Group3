@@ -60,7 +60,7 @@ const PRESETS = {
     ]
   },
   slide10_cutsets: {
-    name: "Slide 10 - Cut-Set Matrix G1 (8 edges)",
+    name: "Slide 10 - Cut-Set Matrix (Graph G₁) (8 edges)",
     type: "edges",
     directed: false,
     nodes: ["v1", "v2", "v3", "v4", "v5", "v6"],
@@ -970,7 +970,7 @@ function renderCycleTable(cycleData) {
     badgesContainer.innerHTML = bHtml || "<em>No fundamental cycles (acyclic tree).</em>";
   }
 
-  let html = `<table class="matrix-table"><thead><tr><th>B_f</th>`;
+  let html = `<table class="matrix-table"><thead><tr><th>B<sub>f</sub></th>`;
   cycleData.columns.forEach((col, idx) => {
     const isChord = idx < cycleData.mu;
     const badge = isChord ? `<span style="color:#a1a1aa;">[chord]</span>` : `<span style="color:#22c55e;">[tree]</span>`;
@@ -1006,7 +1006,7 @@ function renderCutsetTable(cutData) {
     badgesContainer.innerHTML = bHtml || "<em>No cut-sets found.</em>";
   }
 
-  let html = `<table class="matrix-table"><thead><tr><th>Q_f</th>`;
+  let html = `<table class="matrix-table"><thead><tr><th>Q<sub>f</sub></th>`;
   cutData.columns.forEach((col, idx) => {
     const isChord = idx < (currentGraphData.fundamental_cycle_matrix.mu);
     const badge = isChord ? `<span style="color:#a1a1aa;">[chord]</span>` : `<span style="color:#22c55e;">[tree]</span>`;

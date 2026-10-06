@@ -29,7 +29,7 @@
             <option value="slide4_directed">Directed Adjacency Matrix</option>
             <option value="slide6_digraph">Digraph Incidence Matrix</option>
             <option value="slide9_cycles">Fundamental Cycles Model</option>
-            <option value="slide10_cutsets">Cut-Set Matrix G1 Model</option>
+            <option value="slide10_cutsets">Cut-Set Matrix (Graph G₁) Model</option>
             <option value="exercise1">Case Study 1: AI Service Architecture</option>
             <option value="exercise2">Case Study 2: Data Centers Network</option>
           </select>
@@ -147,8 +147,8 @@
 
         <!-- Tab Navigation -->
         <div class="tabs-nav">
-          <button class="tab-btn active" data-target="tabCycle">Fundamental Cycle Matrix (B_f)</button>
-          <button class="tab-btn" data-target="tabCutset">Fundamental Cut-Set Matrix (Q_f)</button>
+          <button class="tab-btn active" data-target="tabCycle">Fundamental Cycle Matrix (B<sub>f</sub>)</button>
+          <button class="tab-btn" data-target="tabCutset">Fundamental Cut-Set Matrix (Q<sub>f</sub>)</button>
           <button class="tab-btn" data-target="tabAllCutsets">All Minimal Cut-Sets C(G)</button>
           <button class="tab-btn" data-target="tabAdjacency">Adjacency Matrix (A)</button>
           <button class="tab-btn" data-target="tabIncidence">Incidence Matrix (M)</button>
@@ -161,7 +161,7 @@
             <strong>Theory:</strong> A fundamental cycle is formed by taking spanning tree <em>T</em> and adding exactly one chord. 
             The matrix is canonically partitioned as <strong>B<sub>f</sub> = [I<sub>&mu;</sub> | B<sub>ft</sub>]</strong> where columns are ordered by chords first, then branches. Click any cycle row or badge to highlight it on the graph!
           </div>
-          <div class="formula-box">&mu; = m - n + 1 fundamental cycles &bull; Column Partition: [Chords e<sub>c</sub> ... | Tree Branches e<sub>t</sub> ...]</div>
+          <div class="formula-box">&mu; = m &minus; n + 1 fundamental cycles &bull; Column Partition: [Chords e<sub>c</sub> ... | Tree Branches e<sub>t</sub> ...]</div>
           <div class="list-badges" id="cycleBadges"></div>
           <div class="table-responsive" id="tableCycle"></div>
         </div>
@@ -169,10 +169,10 @@
         <!-- Tab 2: Fundamental Cut-Set Matrix -->
         <div id="tabCutset" class="tab-pane">
           <div class="info-banner">
-            <strong>Theory:</strong> Removing one branch from spanning tree <em>T</em> splits it into two components (V<sub>1</sub> and V<sub>2</sub>). The edges connecting V<sub>1</sub> and V<sub>2</sub> form a fundamental cut-set. 
+            <strong>Theory:</strong> Removing one branch from spanning tree <em>T</em> splits it into two components (<em>V<sub>1</sub></em> and <em>V<sub>2</sub></em>). The edges connecting <em>V<sub>1</sub></em> and <em>V<sub>2</sub></em> form a fundamental cut-set. 
             Canonical form: <strong>Q<sub>f</sub> = [Q<sub>fc</sub> | I<sub>n-1</sub>]</strong>. Orthogonality holds: <em>B<sub>f</sub> &bull; Q<sub>f</sub><sup>T</sup> &equiv; 0 (mod 2)</em>. Click a row to see the partition!
           </div>
-          <div class="formula-box">Rank r = n - 1 fundamental cut-sets &bull; Orthogonality: Q<sub>fc</sub> = B<sub>ft</sub><sup>T</sup> (mod 2)</div>
+          <div class="formula-box">Rank r = n &minus; 1 fundamental cut-sets &bull; Orthogonality: Q<sub>fc</sub> = B<sub>ft</sub><sup>T</sup> (mod 2)</div>
           <div class="list-badges" id="cutsetBadges"></div>
           <div class="table-responsive" id="tableCutset"></div>
         </div>
@@ -180,7 +180,7 @@
         <!-- Tab 3: All Minimal Cut-Sets -->
         <div id="tabAllCutsets" class="tab-pane">
           <div class="info-banner">
-            <strong>Cut-Edge / Cut-Set Matrix C(G):</strong> Enumerates all minimal cuts whose removal disconnects the graph into two connected components (S and V\S). Matches standard cut-sets <em>c<sub>1</sub> ... c<sub>8</sub></em>.
+            <strong>Cut-Edge / Cut-Set Matrix C(G):</strong> Enumerates all minimal cuts whose removal disconnects the graph into two connected components: <em>S</em> and <em>V &minus; S</em>. Matches standard cut-sets <em>c<sub>1</sub>, c<sub>2</sub>, &hellip;, c<sub>8</sub></em>.
           </div>
           <div class="list-badges" id="allCutsetsBadges"></div>
           <div class="table-responsive" id="tableAllCutsets"></div>

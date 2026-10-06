@@ -39,7 +39,7 @@
    - Undirected & Directed Adjacency Presets
    - Digraph Incidence Matrix Preset
    - Fundamental Cycles Model
-   - Cut-Set Matrix $G_1$ Model (8 cuts)
+   - Cut-Set Matrix (Graph G₁) Model (8 cuts)
    - Case Study 1: AI Service Architecture
    - Case Study 2: Data Centers Network
 6. **Export Capabilities:**
@@ -169,7 +169,7 @@ S5 |  0   0   1   0   0   0   0   1  (Branch e7: cuts {e7, e8})
 
 ---
 
-### Example 2: Slide 10 (Cut-Set Matrix $G_1$)
+### Example 2: Slide 10 (Cut-Set Matrix — Graph G₁)
 For graph $G_1$ with 6 vertices and 8 edges:
 - **Cut-sets found:**
   - $c_1 = \{e_8\}$ (cut-edge / bridge)

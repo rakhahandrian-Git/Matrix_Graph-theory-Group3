@@ -67,7 +67,7 @@ PRESETS = {
         ]
     },
     "slide10_cutsets": {
-        "name": "Week 5 Slide 10 - Cut-Set Matrix Example (G1)",
+        "name": "Slide 10 - Cut-Set Matrix (Graph G₁)",
         "type": "edges",
         "directed": False,
         "nodes": ["v1", "v2", "v3", "v4", "v5", "v6"],
