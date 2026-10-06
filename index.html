@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graph Theory Matrix Visualizer - ITS Week 5</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="static/js/vis-network.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand-wrapper">
+      <div class="brand-logo">ITS</div>
+      <div class="brand-info">
+        <h1>Graph Theory Matrix Visualizer & Analyzer</h1>
+        <p>Institut Teknologi Sepuluh Nopember &bull; Graph Matrix Representation (Week 5)</p>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-primary">Adjacency & Incidence</span>
+      <span class="badge">Spanning Tree T</span>
+      <span class="badge">Cycle Matrix [I<sub>&mu;</sub> | B<sub>ft</sub>]</span>
+      <span class="badge">Cut-Set Matrix [Q<sub>fc</sub> | I<sub>n-1</sub>]</span>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- Sidebar Inputs -->
+    <aside class="sidebar">
+      <div class="panel-section">
+        <div class="panel-title">Course Presets</div>
+        <div class="form-group">
+          <label for="presetSelect">Select Slide / Exercise:</label>
+          <select id="presetSelect">
+            <option value="slide4_undirected">Slide 4 - Undirected Adjacency</option>
+            <option value="slide4_directed">Slide 4 - Directed Adjacency</option>
+            <option value="slide6_digraph">Slide 6 - Digraph Incidence Matrix</option>
+            <option value="slide9_cycles">Slide 9 - Fundamental Cycles Example</option>
+            <option value="slide10_cutsets">Slide 10 - Cut-Set Matrix G1</option>
+            <option value="exercise1">Slide 12 - Exercise 1 (AI Service)</option>
+            <option value="exercise2">Slide 13 - Exercise 2 (Data Centers)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Matrix Configuration</div>
+        
+        <div class="form-group">
+          <label>Matrix Type:</label>
+          <div class="radio-pill-group">
+            <div class="radio-pill">
+              <input type="radio" id="typeAdj" name="matrixType" value="adj" checked>
+              <label for="typeAdj">Adjacency</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="typeInc" name="matrixType" value="inc">
+              <label for="typeInc">Incidence</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Graph Direction:</label>
+          <div class="radio-pill-group">
+            <div class="radio-pill">
+              <input type="radio" id="dirUndirected" name="graphDirected" value="false" checked>
+              <label for="dirUndirected">Undirected</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="dirDirected" name="graphDirected" value="true">
+              <label for="dirDirected">Directed</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="vertexNamesInput">Vertex Labels (Optional):</label>
+          <input type="text" id="vertexNamesInput" placeholder="v1, v2, v3, v4, v5" value="1, 2, 3, 4, 5">
+        </div>
+
+        <div class="form-group">
+          <label id="matrixLabel" for="matrixInput">Adjacency Matrix (N x N):</label>
+          <textarea id="matrixInput" rows="6" spellcheck="false" placeholder="0 1 0 1 1&#10;1 0 1 1 1&#10;0 1 0 0 1&#10;1 1 0 0 1&#10;1 1 1 1 0"></textarea>
+        </div>
+
+        <button id="btnAnalyze" class="btn btn-primary">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+          Analyze & Visualize
+        </button>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Visual Actions</div>
+        <div class="btn-row" style="margin-bottom: 0.5rem;">
+          <button id="btnToggleTree" class="btn btn-secondary">Highlight Tree (T)</button>
+          <button id="btnResetView" class="btn btn-secondary">Reset Colors</button>
+        </div>
+        <div class="btn-row">
+          <button id="btnExportPng" class="btn btn-secondary">Export PNG</button>
+          <button id="btnExportLatex" class="btn btn-secondary">Export LaTeX</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-workspace">
+      <!-- Network Visualization Area -->
+      <section class="viz-section">
+        <div class="viz-header">
+          <div class="viz-title">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><line x1="8.5" y1="7.5" x2="15.5" y2="7.5"/><line x1="7.5" y1="8.5" x2="10.5" y2="15.5"/><line x1="16.5" y1="8.5" x2="13.5" y2="15.5"/></svg>
+            Interactive Graph Topology
+          </div>
+          <div class="viz-legend">
+            <div class="legend-item"><span class="legend-color" style="background: #10b981;"></span> Tree Branches</div>
+            <div class="legend-item"><span class="legend-color" style="background: #a855f7;"></span> Chords (Links)</div>
+            <div class="legend-item"><span class="legend-color" style="background: #06b6d4;"></span> Active Cycle</div>
+            <div class="legend-item"><span class="legend-color" style="background: #f43f5e;"></span> Cut Edges</div>
+          </div>
+        </div>
+
+        <div class="network-canvas-wrapper">
+          <div id="graphCanvas"></div>
+        </div>
+      </section>
+
+      <!-- Analysis Results Area -->
+      <section class="analysis-section">
+        <!-- Top metrics bar -->
+        <div class="metrics-bar">
+          <div class="metric-card">
+            <div class="metric-label">Vertices (n)</div>
+            <div class="metric-val" id="metricNodes">0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Edges (m)</div>
+            <div class="metric-val" id="metricEdges">0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Cyclomatic No. (&mu;)</div>
+            <div class="metric-val" id="metricNullity">0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Tree Rank (r)</div>
+            <div class="metric-val" id="metricRank">0</div>
+          </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-target="tabCycle">Fundamental Cycle Matrix (B_f)</button>
+          <button class="tab-btn" data-target="tabCutset">Fundamental Cut-Set Matrix (Q_f)</button>
+          <button class="tab-btn" data-target="tabAllCutsets">All Minimal Cut-Sets C(G)</button>
+          <button class="tab-btn" data-target="tabAdjacency">Adjacency Matrix (A)</button>
+          <button class="tab-btn" data-target="tabIncidence">Incidence Matrix (M)</button>
+          <button class="tab-btn" data-target="tabExercises">Exercises Walkthrough</button>
+        </div>
+
+        <!-- Tab 1: Fundamental Cycle Matrix -->
+        <div id="tabCycle" class="tab-pane active">
+          <div class="info-banner">
+            <strong>Week 5 Slide 8–9 Concept:</strong> A fundamental cycle is formed by taking spanning tree <em>T</em> and adding exactly one chord. 
+            The matrix is canonically partitioned as <strong>B<sub>f</sub> = [I<sub>&mu;</sub> | B<sub>ft</sub>]</strong> where columns are ordered by chords first, then branches. Click any cycle row or badge to highlight it on the graph!
+          </div>
+          <div class="formula-box">&mu; = m - n + 1 fundamental cycles &bull; Column Partition: [Chords e<sub>c</sub> ... | Tree Branches e<sub>t</sub> ...]</div>
+          <div class="list-badges" id="cycleBadges"></div>
+          <div class="table-responsive" id="tableCycle"></div>
+        </div>
+
+        <!-- Tab 2: Fundamental Cut-Set Matrix -->
+        <div id="tabCutset" class="tab-pane">
+          <div class="info-banner">
+            <strong>Week 5 Slide 10 Concept:</strong> Removing one branch from spanning tree <em>T</em> splits it into two components (V<sub>1</sub> and V<sub>2</sub>). The edges connecting V<sub>1</sub> and V<sub>2</sub> form a fundamental cut-set. 
+            Canonical form: <strong>Q<sub>f</sub> = [Q<sub>fc</sub> | I<sub>n-1</sub>]</strong>. Orthogonality holds: <em>B<sub>f</sub> &bull; Q<sub>f</sub><sup>T</sup> &equiv; 0 (mod 2)</em>. Click a row to see the partition!
+          </div>
+          <div class="formula-box">Rank r = n - 1 fundamental cut-sets &bull; Orthogonality: Q<sub>fc</sub> = B<sub>ft</sub><sup>T</sup> (mod 2)</div>
+          <div class="list-badges" id="cutsetBadges"></div>
+          <div class="table-responsive" id="tableCutset"></div>
+        </div>
+
+        <!-- Tab 3: All Minimal Cut-Sets -->
+        <div id="tabAllCutsets" class="tab-pane">
+          <div class="info-banner">
+            <strong>Week 5 Slide 10 Cut-Edge / Cut-Set Matrix C(G):</strong> Enumerates all minimal cuts whose removal disconnects the graph into two connected components (S and V\S). Matches exact slides example <em>c<sub>1</sub> ... c<sub>8</sub></em>.
+          </div>
+          <div class="list-badges" id="allCutsetsBadges"></div>
+          <div class="table-responsive" id="tableAllCutsets"></div>
+        </div>
+
+        <!-- Tab 4: Adjacency Matrix -->
+        <div id="tabAdjacency" class="tab-pane">
+          <div class="info-banner">
+            <strong>Adjacency Matrix A:</strong> A<sub>ij</sub> = 1 if an edge connects vertex <em>i</em> and vertex <em>j</em>, 0 otherwise (or weight w).
+          </div>
+          <div class="table-responsive" id="tableAdjacency"></div>
+        </div>
+
+        <!-- Tab 5: Incidence Matrix -->
+        <div id="tabIncidence" class="tab-pane">
+          <div class="info-banner">
+            <strong>Incidence Matrix M:</strong> Rows represent vertices, columns represent edges. For digraphs: +1 when leaving, -1 when arriving.
+          </div>
+          <div class="table-responsive" id="tableIncidence"></div>
+        </div>
+
+        <!-- Tab 6: Exercises Walkthrough -->
+        <div id="tabExercises" class="tab-pane">
+          <div class="info-banner">
+            <strong>Week 5 Slide 12 & 13 Exercises Complete Analytical Solutions</strong>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div style="background: #090d16; padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Slide 12: Exercise 1 (AI Service)</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                Architecture: A–B, B–C, B–E, C–D, C–E, D–E, D–F, E–F.<br>
+                Components: A (Image Upload), B (Preprocessing), C (Object Detection), D (Tracking), E (Database), F (Dashboard).
+              </p>
+              <ul style="font-size: 0.85rem; padding-left: 1.25rem; line-height: 1.6; color: var(--text-secondary);">
+                <li><strong>Degrees:</strong> deg(A)=1, deg(B)=3, deg(C)=3, deg(D)=3, deg(E)=4, deg(F)=2.</li>
+                <li><strong>Q3:</strong> E (Database) connects directly with B, C, D, and F.</li>
+                <li><strong>Q4:</strong> E has the highest number of direct connections (degree 4).</li>
+                <li><strong>Q5:</strong> If link C–E is disabled, only C and E are affected directly (deg(C) drops to 2, deg(E) to 3).</li>
+              </ul>
+              <button class="btn btn-secondary" style="margin-top: 0.75rem;" onclick="loadPreset('exercise1')">Load Exercise 1 in Visualizer</button>
+            </div>
+
+            <div style="background: #090d16; padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Slide 13: Exercise 2 (Data Centers)</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                Vertices: V = {1, 2, 3, 4, 5}<br>
+                Edges: E = {(1,2), (1,3), (2,3), (2,4), (3,5), (4,5)}
+              </p>
+              <ul style="font-size: 0.85rem; padding-left: 1.25rem; line-height: 1.6; color: var(--text-secondary);">
+                <li><strong>Q1: Cut-Set Matrix:</strong> Graph has no single bridge cut-edge (edge connectivity &lambda;=2). All minimal cuts are size &ge; 2.</li>
+                <li><strong>Q2: Critical Links:</strong> No single link failure disconnects any center. Minimal cuts isolating individual nodes are of size 2 (e.g. {(1,2),(1,3)} for node 1; {(2,4),(4,5)} for node 4; {(3,5),(4,5)} for node 5).</li>
+                <li><strong>Q3: Proposed Links:</strong> Add link (1, 4) or (1, 5) to eliminate 2-edge bottlenecks and provide direct multi-path redundancy.</li>
+              </ul>
+              <button class="btn btn-secondary" style="margin-top: 0.75rem;" onclick="loadPreset('exercise2')">Load Exercise 2 in Visualizer</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- LaTeX Modal -->
+  <div id="latexModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="color: var(--primary);">Export LaTeX Matrix Code</h3>
+        <button class="modal-close" onclick="closeLatexModal()">&times;</button>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+        Copy and paste directly into your Overleaf / LaTeX assignment report:
+      </p>
+      <textarea id="latexOutput" rows="12" readonly style="font-size: 0.8rem;"></textarea>
+      <button class="btn btn-primary" style="margin-top: 0.75rem;" onclick="navigator.clipboard.writeText(document.getElementById('latexOutput').value); alert('LaTeX code copied to clipboard!');">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <script src="static/js/app.js"></script>
+</body>
+</html>
