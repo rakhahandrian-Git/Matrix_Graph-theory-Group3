@@ -159,8 +159,37 @@ function setupEventListeners() {
   });
 
   document.getElementById("btnResetView").addEventListener("click", () => {
-    if (currentNetwork) currentNetwork.fit();
+    if (currentNetwork) currentNetwork.fit({ padding: 60 });
     clearHighlight();
+  });
+
+  const btnZoomIn = document.getElementById("btnZoomIn");
+  if (btnZoomIn) {
+    btnZoomIn.addEventListener("click", () => {
+      if (currentNetwork) {
+        currentNetwork.moveTo({ scale: currentNetwork.getScale() * 1.25 });
+      }
+    });
+  }
+
+  const btnZoomOut = document.getElementById("btnZoomOut");
+  if (btnZoomOut) {
+    btnZoomOut.addEventListener("click", () => {
+      if (currentNetwork) {
+        currentNetwork.moveTo({ scale: currentNetwork.getScale() * 0.8 });
+      }
+    });
+  }
+
+  const btnFit = document.getElementById("btnFit");
+  if (btnFit) {
+    btnFit.addEventListener("click", () => {
+      if (currentNetwork) currentNetwork.fit({ padding: 60 });
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    if (currentNetwork) currentNetwork.fit({ padding: 50 });
   });
 
   document.getElementById("btnExportPng").addEventListener("click", exportGraphPng);
@@ -732,12 +761,17 @@ function drawVisNetwork(data) {
     physics: {
       solver: "forceAtlas2Based",
       forceAtlas2Based: {
-        gravitationalConstant: -50,
-        centralGravity: 0.01,
-        springLength: 100,
-        springConstant: 0.08
+        gravitationalConstant: -38,
+        centralGravity: 0.09,
+        springLength: 85,
+        springConstant: 0.08,
+        damping: 0.5
       },
-      stabilization: { iterations: 150 }
+      stabilization: {
+        iterations: 220,
+        updateInterval: 25,
+        fit: true
+      }
     },
     interaction: {
       hover: true,
@@ -747,6 +781,21 @@ function drawVisNetwork(data) {
   };
 
   currentNetwork = new vis.Network(container, networkData, options);
+
+  // Auto-fit with guaranteed padding after physics settles
+  currentNetwork.once("stabilizationIterationsDone", () => {
+    currentNetwork.fit({
+      padding: 60,
+      animation: { duration: 300, easingFunction: "easeInOutQuad" }
+    });
+  });
+
+  // Fallback fit after 120ms
+  setTimeout(() => {
+    if (currentNetwork) {
+      currentNetwork.fit({ padding: 60 });
+    }
+  }, 120);
 }
 
 // Interactive Highlighting
