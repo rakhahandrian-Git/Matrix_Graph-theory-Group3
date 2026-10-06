@@ -168,7 +168,7 @@ S3 |  1   1   1   0   0   1   0   0  (Branch e3: cuts {e3, e5, e6, e8})
 S4 |  0   1   1   0   0   0   1   0  (Branch e4: cuts {e4, e6, e8})
 S5 |  0   0   1   0   0   0   0   1  (Branch e7: cuts {e7, e8})
 ```
-*Note that $Q_{fc} = B_{ft}^T$, satisfying $B_f \cdot Q_f^T \equiv 0 \pmod 2$.*
+Note that $Q_{fc} = B_{ft}^T$, satisfying $B_f \cdot Q_f^T \equiv 0 \pmod 2$.
 
 ---
 
