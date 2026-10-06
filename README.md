@@ -1,9 +1,6 @@
-# Graph Matrix Representation
-Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), and Cut-Set Matrices ($Q_f$ / $C(G)$).
+# Informatics ITS Graph Theory IUP
 
----
-
-## 👥 Group Members
+## Group 1 Assignment 5
 
 <div align="center">
 
@@ -16,9 +13,11 @@ Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), 
 
 </div>
 
+Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), and Cut-Set Matrices ($Q_f$ / $C(G)$).
+
 ---
 
-## 🚀 Key Features
+## Key Features
 
 1. **Dual Matrix Input Support:**
    - **Adjacency Matrix ($A$):** Accepts $N \times N$ matrices for undirected and directed graphs (digraphs) with automatic symmetry validation and loop detection.
@@ -50,7 +49,7 @@ Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), 
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **Python:** 3.10 or higher
 - **Browser:** Any modern web browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari)
@@ -61,7 +60,7 @@ Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), 
 
 ---
 
-## 🏃 How to Run
+## How to Run
 
 You can run this project in **3 convenient ways**:
 
@@ -113,7 +112,7 @@ python test_graph.py
 
 ---
 
-## 🔬 Sample Input & Output Walkthrough
+## Sample Input & Output Walkthrough
 
 ### Example 1: Slide 12 (Exercise 1 — AI Service Architecture)
 **Input Architecture:**  
@@ -186,7 +185,7 @@ Matches exactly the 8 cut-sets illustrated on Slide 10.
 
 ---
 
-## 📂 Repository File Structure
+## Repository File Structure
 
 ```
 ├── app.py                      # Flask web server & REST API
@@ -207,6 +206,6 @@ Matches exactly the 8 cut-sets illustrated on Slide 10.
 └── README.md                   # Project documentation & user guide
 ```
 
-## 📜 Note
+## Note
 *Any use of AI tools should be disclosed by supplementing prompt histories or repository commits.*
 >>>>>>> master
