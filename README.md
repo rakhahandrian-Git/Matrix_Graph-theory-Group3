@@ -206,6 +206,13 @@ Matches exactly the 8 cut-sets illustrated on Slide 10.
 └── README.md                   # Project documentation & user guide
 ```
 
-## Note
-*Any use of AI tools should be disclosed by supplementing prompt histories or repository commits.*
->>>>>>> master
+---
+
+## Note & AI Usage Disclosure
+
+Any use of AI tools should be disclosed by supplementing prompt histories or repository commits.
+
+AI tools were utilized during the development of this project for:
+- **Styling:** Designing the clean dark monochrome user interface and CSS responsive layouts.
+- **Code Assistance:** Assisting with core algorithm implementation, matrix parsers, and unit test coverage.
+- **Visualizations:** Configuring physics simulation parameters, graph rendering layouts, and interactive canvas components.
