@@ -52,7 +52,7 @@ Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), 
 ## Prerequisites
 
 - **Python:** 3.10 or higher
-- **Browser:** Any modern web browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari)
+- **Browser
 - **Optional Dependencies:** `flask` and `requests` (for the Flask web server):
   ```bash
   pip install -r requirements.txt
@@ -201,7 +201,6 @@ Matches exactly the 8 cut-sets illustrated on Slide 10.
 │   └── js/
 │       ├── app.js              # Frontend UI controller & client-side solver
 │       └── vis-network.min.js  # Offline bundled Vis-Network library
-├── EXERCISES.md                # Full step-by-step solutions to Slide 12 & 13 exercises
 ├── requirements.txt            # Python dependencies
 └── README.md                   # Project documentation & user guide
 ```
@@ -210,7 +209,7 @@ Matches exactly the 8 cut-sets illustrated on Slide 10.
 
 ## Note & AI Usage Disclosure
 
-Any use of AI tools should be disclosed by supplementing prompt histories or repository commits.
+AI used to generate structure, formatting, improving visuals, commit message, 
 
 AI tools were utilized during the development of this project for:
 - **Styling:** Designing the clean dark monochrome user interface and CSS responsive layouts.
