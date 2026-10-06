@@ -209,8 +209,6 @@ Matches exactly the 8 cut-sets illustrated on Slide 10.
 
 ## Note & AI Usage Disclosure
 
-AI used to generate structure, formatting, improving visuals, commit message, 
-
 AI tools were utilized during the development of this project for:
 - **Styling:** Designing the clean dark monochrome user interface and CSS responsive layouts.
 - **Code Assistance:** Assisting with core algorithm implementation, matrix parsers, and unit test coverage.
