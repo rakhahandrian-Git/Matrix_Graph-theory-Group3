@@ -1,6 +1,5 @@
-# Graph Theory Matrix Visualizer & Analyzer
-> **Interactive Graph Matrix Representation & Topology Analyzer**  
-> Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), and Cut-Set Matrices ($Q_f$ / $C(G)$).
+# Graph Matrix Representation
+Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), and Cut-Set Matrices ($Q_f$ / $C(G)$).
 
 ---
 
