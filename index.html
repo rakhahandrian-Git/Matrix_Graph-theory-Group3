@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graph Theory Matrix Visualizer - ITS Week 5</title>
+  <title>Graph Theory Matrix Visualizer</title>
   <link rel="stylesheet" href="static/css/style.css">
   <script src="static/js/vis-network.min.js"></script>
 </head>
 <body>
   <header>
     <div class="brand-wrapper">
-      <div class="brand-logo">ITS</div>
       <div class="brand-info">
         <h1>Graph Theory Matrix Visualizer & Analyzer</h1>
-        <p>Institut Teknologi Sepuluh Nopember &bull; Graph Matrix Representation (Week 5)</p>
+        <p>Interactive Graph Matrix Representation & Topology Analyzer</p>
       </div>
     </div>
     <div class="header-badges">
@@ -28,17 +27,17 @@
     <!-- Sidebar Inputs -->
     <aside class="sidebar">
       <div class="panel-section">
-        <div class="panel-title">Course Presets</div>
+        <div class="panel-title">Graph Presets</div>
         <div class="form-group">
-          <label for="presetSelect">Select Slide / Exercise:</label>
+          <label for="presetSelect">Select Preset / Case Study:</label>
           <select id="presetSelect">
-            <option value="slide4_undirected">Slide 4 - Undirected Adjacency</option>
-            <option value="slide4_directed">Slide 4 - Directed Adjacency</option>
-            <option value="slide6_digraph">Slide 6 - Digraph Incidence Matrix</option>
-            <option value="slide9_cycles">Slide 9 - Fundamental Cycles Example</option>
-            <option value="slide10_cutsets">Slide 10 - Cut-Set Matrix G1</option>
-            <option value="exercise1">Slide 12 - Exercise 1 (AI Service)</option>
-            <option value="exercise2">Slide 13 - Exercise 2 (Data Centers)</option>
+            <option value="slide4_undirected">Undirected Adjacency Matrix</option>
+            <option value="slide4_directed">Directed Adjacency Matrix</option>
+            <option value="slide6_digraph">Digraph Incidence Matrix</option>
+            <option value="slide9_cycles">Fundamental Cycles Model</option>
+            <option value="slide10_cutsets">Cut-Set Matrix G1 Model</option>
+            <option value="exercise1">Case Study 1: AI Service Architecture</option>
+            <option value="exercise2">Case Study 2: Data Centers Network</option>
           </select>
         </div>
       </div>
@@ -113,10 +112,10 @@
             Interactive Graph Topology
           </div>
           <div class="viz-legend">
-            <div class="legend-item"><span class="legend-color" style="background: #10b981;"></span> Tree Branches</div>
-            <div class="legend-item"><span class="legend-color" style="background: #a855f7;"></span> Chords (Links)</div>
-            <div class="legend-item"><span class="legend-color" style="background: #06b6d4;"></span> Active Cycle</div>
-            <div class="legend-item"><span class="legend-color" style="background: #f43f5e;"></span> Cut Edges</div>
+            <div class="legend-item"><span class="legend-color" style="background: #22c55e;"></span> Tree Branches</div>
+            <div class="legend-item"><span class="legend-color" style="background: #71717a;"></span> Chords (Links)</div>
+            <div class="legend-item"><span class="legend-color" style="background: #ffffff;"></span> Active Cycle</div>
+            <div class="legend-item"><span class="legend-color" style="background: #ef4444;"></span> Cut Edges</div>
           </div>
         </div>
 
@@ -154,13 +153,13 @@
           <button class="tab-btn" data-target="tabAllCutsets">All Minimal Cut-Sets C(G)</button>
           <button class="tab-btn" data-target="tabAdjacency">Adjacency Matrix (A)</button>
           <button class="tab-btn" data-target="tabIncidence">Incidence Matrix (M)</button>
-          <button class="tab-btn" data-target="tabExercises">Exercises Walkthrough</button>
+          <button class="tab-btn" data-target="tabExercises">Case Studies Walkthrough</button>
         </div>
 
         <!-- Tab 1: Fundamental Cycle Matrix -->
         <div id="tabCycle" class="tab-pane active">
           <div class="info-banner">
-            <strong>Week 5 Slide 8–9 Concept:</strong> A fundamental cycle is formed by taking spanning tree <em>T</em> and adding exactly one chord. 
+            <strong>Theory:</strong> A fundamental cycle is formed by taking spanning tree <em>T</em> and adding exactly one chord. 
             The matrix is canonically partitioned as <strong>B<sub>f</sub> = [I<sub>&mu;</sub> | B<sub>ft</sub>]</strong> where columns are ordered by chords first, then branches. Click any cycle row or badge to highlight it on the graph!
           </div>
           <div class="formula-box">&mu; = m - n + 1 fundamental cycles &bull; Column Partition: [Chords e<sub>c</sub> ... | Tree Branches e<sub>t</sub> ...]</div>
@@ -171,7 +170,7 @@
         <!-- Tab 2: Fundamental Cut-Set Matrix -->
         <div id="tabCutset" class="tab-pane">
           <div class="info-banner">
-            <strong>Week 5 Slide 10 Concept:</strong> Removing one branch from spanning tree <em>T</em> splits it into two components (V<sub>1</sub> and V<sub>2</sub>). The edges connecting V<sub>1</sub> and V<sub>2</sub> form a fundamental cut-set. 
+            <strong>Theory:</strong> Removing one branch from spanning tree <em>T</em> splits it into two components (V<sub>1</sub> and V<sub>2</sub>). The edges connecting V<sub>1</sub> and V<sub>2</sub> form a fundamental cut-set. 
             Canonical form: <strong>Q<sub>f</sub> = [Q<sub>fc</sub> | I<sub>n-1</sub>]</strong>. Orthogonality holds: <em>B<sub>f</sub> &bull; Q<sub>f</sub><sup>T</sup> &equiv; 0 (mod 2)</em>. Click a row to see the partition!
           </div>
           <div class="formula-box">Rank r = n - 1 fundamental cut-sets &bull; Orthogonality: Q<sub>fc</sub> = B<sub>ft</sub><sup>T</sup> (mod 2)</div>
@@ -182,7 +181,7 @@
         <!-- Tab 3: All Minimal Cut-Sets -->
         <div id="tabAllCutsets" class="tab-pane">
           <div class="info-banner">
-            <strong>Week 5 Slide 10 Cut-Edge / Cut-Set Matrix C(G):</strong> Enumerates all minimal cuts whose removal disconnects the graph into two connected components (S and V\S). Matches exact slides example <em>c<sub>1</sub> ... c<sub>8</sub></em>.
+            <strong>Cut-Edge / Cut-Set Matrix C(G):</strong> Enumerates all minimal cuts whose removal disconnects the graph into two connected components (S and V\S). Matches standard cut-sets <em>c<sub>1</sub> ... c<sub>8</sub></em>.
           </div>
           <div class="list-badges" id="allCutsetsBadges"></div>
           <div class="table-responsive" id="tableAllCutsets"></div>
@@ -207,36 +206,36 @@
         <!-- Tab 6: Exercises Walkthrough -->
         <div id="tabExercises" class="tab-pane">
           <div class="info-banner">
-            <strong>Week 5 Slide 12 & 13 Exercises Complete Analytical Solutions</strong>
+            <strong>Analytical Graph Topology Case Studies Solutions</strong>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-            <div style="background: #090d16; padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-              <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Slide 12: Exercise 1 (AI Service)</h3>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+            <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <h3 style="color: #ffffff; margin-bottom: 0.5rem;">Case Study 1: AI Service Architecture</h3>
+              <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
                 Architecture: A–B, B–C, B–E, C–D, C–E, D–E, D–F, E–F.<br>
                 Components: A (Image Upload), B (Preprocessing), C (Object Detection), D (Tracking), E (Database), F (Dashboard).
               </p>
-              <ul style="font-size: 0.85rem; padding-left: 1.25rem; line-height: 1.6; color: var(--text-secondary);">
+              <ul style="font-size: 0.825rem; padding-left: 1.25rem; line-height: 1.6; color: var(--text-secondary);">
                 <li><strong>Degrees:</strong> deg(A)=1, deg(B)=3, deg(C)=3, deg(D)=3, deg(E)=4, deg(F)=2.</li>
-                <li><strong>Q3:</strong> E (Database) connects directly with B, C, D, and F.</li>
-                <li><strong>Q4:</strong> E has the highest number of direct connections (degree 4).</li>
-                <li><strong>Q5:</strong> If link C–E is disabled, only C and E are affected directly (deg(C) drops to 2, deg(E) to 3).</li>
+                <li><strong>Direct Connections:</strong> E (Database) connects directly with B, C, D, and F.</li>
+                <li><strong>Max Degree:</strong> E has the highest number of direct connections (degree 4).</li>
+                <li><strong>Failure Impact:</strong> If link C–E is disabled, only C and E are affected directly (deg(C) drops to 2, deg(E) to 3).</li>
               </ul>
-              <button class="btn btn-secondary" style="margin-top: 0.75rem;" onclick="loadPreset('exercise1')">Load Exercise 1 in Visualizer</button>
+              <button class="btn btn-secondary" style="margin-top: 0.75rem;" onclick="loadPreset('exercise1')">Load Case Study 1 in Visualizer</button>
             </div>
 
-            <div style="background: #090d16; padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-              <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Slide 13: Exercise 2 (Data Centers)</h3>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+            <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <h3 style="color: #ffffff; margin-bottom: 0.5rem;">Case Study 2: Data Centers Network</h3>
+              <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
                 Vertices: V = {1, 2, 3, 4, 5}<br>
                 Edges: E = {(1,2), (1,3), (2,3), (2,4), (3,5), (4,5)}
               </p>
-              <ul style="font-size: 0.85rem; padding-left: 1.25rem; line-height: 1.6; color: var(--text-secondary);">
-                <li><strong>Q1: Cut-Set Matrix:</strong> Graph has no single bridge cut-edge (edge connectivity &lambda;=2). All minimal cuts are size &ge; 2.</li>
-                <li><strong>Q2: Critical Links:</strong> No single link failure disconnects any center. Minimal cuts isolating individual nodes are of size 2 (e.g. {(1,2),(1,3)} for node 1; {(2,4),(4,5)} for node 4; {(3,5),(4,5)} for node 5).</li>
-                <li><strong>Q3: Proposed Links:</strong> Add link (1, 4) or (1, 5) to eliminate 2-edge bottlenecks and provide direct multi-path redundancy.</li>
+              <ul style="font-size: 0.825rem; padding-left: 1.25rem; line-height: 1.6; color: var(--text-secondary);">
+                <li><strong>Cut-Set Matrix:</strong> Graph has no single bridge cut-edge (edge connectivity &lambda;=2). All minimal cuts are size &ge; 2.</li>
+                <li><strong>Critical Links:</strong> No single link failure disconnects any center. Minimal cuts isolating individual nodes are of size 2 (e.g. {(1,2),(1,3)} for node 1; {(2,4),(4,5)} for node 4; {(3,5),(4,5)} for node 5).</li>
+                <li><strong>Proposed Links:</strong> Add link (1, 4) or (1, 5) to eliminate 2-edge bottlenecks and provide direct multi-path redundancy.</li>
               </ul>
-              <button class="btn btn-secondary" style="margin-top: 0.75rem;" onclick="loadPreset('exercise2')">Load Exercise 2 in Visualizer</button>
+              <button class="btn btn-secondary" style="margin-top: 0.75rem;" onclick="loadPreset('exercise2')">Load Case Study 2 in Visualizer</button>
             </div>
           </div>
         </div>
@@ -248,11 +247,11 @@
   <div id="latexModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 style="color: var(--primary);">Export LaTeX Matrix Code</h3>
+        <h3 style="color: #ffffff;">Export LaTeX Matrix Code</h3>
         <button class="modal-close" onclick="closeLatexModal()">&times;</button>
       </div>
       <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-        Copy and paste directly into your Overleaf / LaTeX assignment report:
+        Copy and paste directly into your report:
       </p>
       <textarea id="latexOutput" rows="12" readonly style="font-size: 0.8rem;"></textarea>
       <button class="btn btn-primary" style="margin-top: 0.75rem;" onclick="navigator.clipboard.writeText(document.getElementById('latexOutput').value); alert('LaTeX code copied to clipboard!');">Copy to Clipboard</button>

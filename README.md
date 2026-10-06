@@ -1,19 +1,18 @@
 # Graph Theory Matrix Visualizer & Analyzer
-> **Institut Teknologi Sepuluh Nopember (ITS)**  
-> **Course:** Graph Theory (Teori Graf) — Week 5: Graph Matrix Representation  
-> **Lecturer:** Ilham Gurat Adillion (`ilhamgurata@its.ac.id`)  
+> **Interactive Graph Matrix Representation & Topology Analyzer**  
+> Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), and Cut-Set Matrices ($Q_f$ / $C(G)$).
 
 ---
 
-## 👥 Group Identity (Kelompok)
-*All homework in this course is a group homework (4 people).*
+## 👥 Authors & Team
+*Project Team Information:*
 
-| No | Full Name | NRP / Student ID | Class | Role / Contribution |
+| No | Full Name | Student ID | Class / Major | Role / Contribution |
 |---|---|---|---|---|
-| 1 | *Member 1 Name* | *50252xxxxx* | *Graph Theory A* | Graph Theory Algorithms & Matrix Math |
-| 2 | *Member 2 Name* | *50252xxxxx* | *Graph Theory A* | Web Application Architecture & Flask Backend |
-| 3 | *Member 3 Name* | *50252xxxxx* | *Graph Theory A* | Interactive Topology Visualization & UI/UX |
-| 4 | *Member 4 Name* | *50252xxxxx* | *Graph Theory A* | Documentation, Test Suite & Exercises Verification |
+| 1 | *Member 1 Name* | *ID Number* | *Computer Science* | Graph Theory Algorithms & Matrix Math |
+| 2 | *Member 2 Name* | *ID Number* | *Computer Science* | Web Application Architecture & Flask Backend |
+| 3 | *Member 3 Name* | *ID Number* | *Computer Science* | Interactive Topology Visualization & UI/UX |
+| 4 | *Member 4 Name* | *ID Number* | *Computer Science* | Documentation, Test Suite & Case Studies Verification |
 
 ---
 
@@ -36,13 +35,13 @@
    - **All Minimal Cut-Sets Matrix ($C(G)$):** Enumerates all minimal cut-sets (matching Week 5 Slide 10 $c_1 \dots c_8$).
    - Verifies the fundamental theorem: **$B_f \cdot Q_f^T \equiv 0 \pmod 2$** (orthogonality of cycle and cut spaces).
    - **Interactive Highlighting:** Click any cut-set to highlight the cut edges and tint the two vertex partitions.
-5. **Preloaded ITS Week 5 Presets:**
-   - Slide 4 (Undirected & Directed Adjacency)
-   - Slide 6 (Digraph Incidence Matrix)
-   - Slide 9 (Fundamental Cycles Example)
-   - Slide 10 (Cut-Set Matrix $G_1$ with 8 cuts)
-   - Slide 12 (Exercise 1: AI Service Architecture)
-   - Slide 13 (Exercise 2: Data Centers Network)
+5. **Preloaded Graph Presets:**
+   - Undirected & Directed Adjacency Presets
+   - Digraph Incidence Matrix Preset
+   - Fundamental Cycles Model
+   - Cut-Set Matrix $G_1$ Model (8 cuts)
+   - Case Study 1: AI Service Architecture
+   - Case Study 2: Data Centers Network
 6. **Export Capabilities:**
    - Export graph canvas directly as high-resolution PNG.
    - Export matrices into LaTeX `pmatrix` code ready for assignment reports.
@@ -206,8 +205,5 @@ Matches exactly the 8 cut-sets illustrated on Slide 10.
 └── README.md                   # Project documentation & user guide
 ```
 
----
-
-## 📜 Academic Integrity Note
-*Per course slide guidelines (Slide 14 & 15): "Any use of AI is to be disclosed honestly by supplementing prompt history on submitted homework."*  
-Please include your prompts log if submitting along with this repository.
+## 📜 Note
+*Any use of AI tools should be disclosed by supplementing prompt histories or repository commits.*

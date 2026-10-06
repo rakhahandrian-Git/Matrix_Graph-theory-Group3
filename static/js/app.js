@@ -1,7 +1,6 @@
 /**
  * Graph Matrix Visualizer & Analyzer Engine
  * Front-end controller & Offline Client-side Solver
- * Week 5 Graph Theory - Institut Teknologi Sepuluh Nopember
  */
 
 // Presets registry
@@ -697,9 +696,9 @@ function drawVisNetwork(data) {
     size: 26,
     font: { color: "#ffffff", size: 14, face: "system-ui", bold: { color: "#ffffff" } },
     color: {
-      background: "#1e293b",
-      border: "#38bdf8",
-      highlight: { background: "#0284c7", border: "#38bdf8" }
+      background: "#18181b",
+      border: "#ffffff",
+      highlight: { background: "#27272a", border: "#ffffff" }
     },
     borderWidth: 2
   }));
@@ -714,10 +713,10 @@ function drawVisNetwork(data) {
       to: e.v,
       label: e.id,
       arrows: data.is_directed ? "to" : undefined,
-      font: { color: "#94a3b8", size: 11, background: "#090d16", strokeWidth: 0 },
+      font: { color: "#a1a1aa", size: 11, background: "#09090b", strokeWidth: 0 },
       color: {
-        color: isTree ? "#10b981" : "#a855f7",
-        highlight: "#06b6d4"
+        color: isTree ? "#22c55e" : "#71717a",
+        highlight: "#ffffff"
       },
       dashes: !isTree && !data.is_directed,
       width: isTree ? 3 : 2
@@ -760,14 +759,14 @@ function highlightSpanningTree() {
     const isTree = treeEdgeIds.has(e.id);
     return {
       id: e.id,
-      color: { color: isTree ? "#10b981" : "#334155" },
+      color: { color: isTree ? "#22c55e" : "#27272a" },
       width: isTree ? 4 : 1,
       dashes: !isTree
     };
   });
 
   currentNetwork.body.data.edges.update(edgesUpdate);
-  document.getElementById("btnToggleTree").classList.add("btn-primary");
+  document.getElementById("btnToggleTree").classList.add("btn-active");
 }
 
 function highlightCycle(cycleId) {
@@ -782,7 +781,7 @@ function highlightCycle(cycleId) {
     const isInc = inCycleEdges.has(e.id);
     return {
       id: e.id,
-      color: { color: isInc ? "#06b6d4" : "#1e293b" },
+      color: { color: isInc ? "#ffffff" : "#18181b" },
       width: isInc ? 4 : 1,
       dashes: false
     };
@@ -810,7 +809,7 @@ function highlightCutset(cutId, isFundamental = true) {
     const isCut = cutEdges.has(e.id);
     return {
       id: e.id,
-      color: { color: isCut ? "#f43f5e" : "#1e293b" },
+      color: { color: isCut ? "#ef4444" : "#18181b" },
       width: isCut ? 4 : 1,
       dashes: isCut
     };
@@ -821,8 +820,8 @@ function highlightCutset(cutId, isFundamental = true) {
   const nodesUpdate = currentGraphData.vertices.map(v => ({
     id: v,
     color: {
-      background: v1Set.has(v) ? "#0284c7" : "#d97706",
-      border: v1Set.has(v) ? "#38bdf8" : "#fbbf24"
+      background: v1Set.has(v) ? "#27272a" : "#09090b",
+      border: v1Set.has(v) ? "#ffffff" : "#71717a"
     }
   }));
   currentNetwork.body.data.nodes.update(nodesUpdate);
@@ -835,14 +834,14 @@ function highlightCutset(cutId, isFundamental = true) {
 function clearHighlight() {
   if (!currentNetwork || !currentGraphData) return;
   activeHighlight = null;
-  document.getElementById("btnToggleTree").classList.remove("btn-primary");
+  document.getElementById("btnToggleTree").classList.remove("btn-active");
 
   const treeEdgeIds = new Set(currentGraphData.fundamental_cycle_matrix.branches);
   const edgesUpdate = currentGraphData.edges.map(e => {
     const isTree = treeEdgeIds.has(e.id);
     return {
       id: e.id,
-      color: { color: isTree ? "#10b981" : "#a855f7" },
+      color: { color: isTree ? "#22c55e" : "#71717a" },
       width: isTree ? 3 : 2,
       dashes: !isTree && !currentGraphData.is_directed
     };
@@ -851,7 +850,7 @@ function clearHighlight() {
 
   const nodesUpdate = currentGraphData.vertices.map(v => ({
     id: v,
-    color: { background: "#1e293b", border: "#38bdf8" }
+    color: { background: "#18181b", border: "#ffffff" }
   }));
   currentNetwork.body.data.nodes.update(nodesUpdate);
 
@@ -920,7 +919,7 @@ function renderCycleTable(cycleData) {
   let html = `<table class="matrix-table"><thead><tr><th>B_f</th>`;
   cycleData.columns.forEach((col, idx) => {
     const isChord = idx < cycleData.mu;
-    const badge = isChord ? `<span style="color:#a855f7;">[chord]</span>` : `<span style="color:#10b981;">[tree]</span>`;
+    const badge = isChord ? `<span style="color:#a1a1aa;">[chord]</span>` : `<span style="color:#22c55e;">[tree]</span>`;
     html += `<th>${col}<br>${badge}</th>`;
   });
   html += `</tr></thead><tbody>`;
@@ -956,7 +955,7 @@ function renderCutsetTable(cutData) {
   let html = `<table class="matrix-table"><thead><tr><th>Q_f</th>`;
   cutData.columns.forEach((col, idx) => {
     const isChord = idx < (currentGraphData.fundamental_cycle_matrix.mu);
-    const badge = isChord ? `<span style="color:#a855f7;">[chord]</span>` : `<span style="color:#10b981;">[tree]</span>`;
+    const badge = isChord ? `<span style="color:#a1a1aa;">[chord]</span>` : `<span style="color:#22c55e;">[tree]</span>`;
     html += `<th>${col}<br>${badge}</th>`;
   });
   html += `</tr></thead><tbody>`;
@@ -1025,7 +1024,7 @@ function exportLatexModal() {
   const textarea = document.getElementById("latexOutput");
   if (!modal || !textarea) return;
 
-  let code = `% Graph Matrices Export (Week 5 Graph Theory ITS)\n`;
+  let code = `% Graph Matrices Export\n`;
   code += `% Vertices: ${currentGraphData.vertices.join(", ")}\n\n`;
 
   // Fundamental Cycle Matrix

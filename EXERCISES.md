@@ -1,7 +1,5 @@
-# Week 5 Graph Theory — Exercises Analytical Solutions
-**Course:** Graph Theory (Teori Graf) — Week 5: Graph Matrix Representation  
-**Institution:** Institut Teknologi Sepuluh Nopember (ITS)  
-**Lecturer:** Ilham Gurat Adillion (`ilhamgurata@its.ac.id`)  
+# Graph Theory — Exercises Analytical Solutions
+**Topic:** Graph Matrix Representation, Cycle & Cut-Set Analysis
 
 ---
 

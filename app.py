@@ -1,6 +1,5 @@
 """
 Flask Web Application for Graph Matrix Representation & Visualizer
-Week 5 Graph Theory - Institut Teknologi Sepuluh Nopember
 """
 
 import os
