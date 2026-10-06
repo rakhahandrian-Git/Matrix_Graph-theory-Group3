@@ -3,15 +3,18 @@ Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), 
 
 ---
 
-## 👥 Authors & Team
-*Project Team Information:*
+## 👥 Group Members
 
-| No | Full Name | Student ID | Class / Major | Role / Contribution |
-|---|---|---|---|---|
-| 1 | *Member 1 Name* | *ID Number* | *Computer Science* | Graph Theory Algorithms & Matrix Math |
-| 2 | *Member 2 Name* | *ID Number* | *Computer Science* | Web Application Architecture & Flask Backend |
-| 3 | *Member 3 Name* | *ID Number* | *Computer Science* | Interactive Topology Visualization & UI/UX |
-| 4 | *Member 4 Name* | *ID Number* | *Computer Science* | Documentation, Test Suite & Case Studies Verification |
+<div align="center">
+
+| NRP | Name |
+| :---: | :---: |
+| 5025251012 | Khumaidy Syafiq El Maududy |
+| 5025251015 | Renato Kiran Arisandi |
+| 5025251016 | Keven John Gondowardojo |
+| 5025251010 | Agile Octa Agrakha Handrian |
+
+</div>
 
 ---
 
