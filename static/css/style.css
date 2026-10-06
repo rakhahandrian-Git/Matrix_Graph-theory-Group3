@@ -75,13 +75,33 @@ header {
 }
 
 .badge {
+  font-family: inherit;
   font-size: 0.725rem;
-  padding: 0.25rem 0.65rem;
+  padding: 0.3rem 0.75rem;
   border-radius: 9999px;
   font-weight: 600;
   border: 1px solid var(--border-color);
   background: #18181b;
   color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  outline: none;
+}
+
+.badge:hover {
+  background: #27272a;
+  border-color: #71717a;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.badge:active {
+  transform: translateY(1px);
 }
 
 .badge-primary {
