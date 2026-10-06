@@ -15,7 +15,7 @@
 
 ---
 
-Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), and Cut-Set Matrices ($Q_f$ / C(G)$).
+Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), and Cut-Set Matrices ($Q_f$ / C(G)).
 
 ---
 
