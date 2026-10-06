@@ -278,8 +278,8 @@ select:focus, textarea:focus, input[type="text"]:focus {
 /* Visualization Panel */
 .viz-section {
   position: relative;
-  height: 50%;
-  min-height: 380px;
+  height: 52%;
+  min-height: 420px;
   background-color: #050507;
   border-bottom: 1px solid var(--border-color);
   display: flex;

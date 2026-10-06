@@ -761,14 +761,15 @@ function drawVisNetwork(data) {
     physics: {
       solver: "forceAtlas2Based",
       forceAtlas2Based: {
-        gravitationalConstant: -38,
-        centralGravity: 0.09,
-        springLength: 85,
-        springConstant: 0.08,
-        damping: 0.5
+        gravitationalConstant: -90,
+        centralGravity: 0.025,
+        springLength: 150,
+        springConstant: 0.05,
+        damping: 0.45,
+        avoidOverlap: 1.0
       },
       stabilization: {
-        iterations: 220,
+        iterations: 250,
         updateInterval: 25,
         fit: true
       }
