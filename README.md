@@ -33,7 +33,7 @@ Adjacency Matrix, Incidence Matrix, Spanning Trees, Fundamental Cycles ($B_f$), 
    - Computes fundamental cycles $Z_1, Z_2, \dots, Z_\mu$ for each chord.
    - Outputs canonical matrix partitioned as **$B_f = [I_\mu \mid B_{ft}]$**.
    - **Interactive Highlighting:** Click any cycle in the UI to highlight that exact loop on the canvas.
-4. **Cut-Set Matrix ($Q_f$ & $C(G)$):**
+4. **Cut-Set Matrix (Q<sub>f</sub> & C(G)):**
    - **Fundamental Cut-Set Matrix ($Q_f$):** For each tree branch, isolates the fundamental cut-set partitioning the graph into $(V_1 \mid V_2)$. Formatted canonically as **$Q_f = [Q_{fc} \mid I_{n-1}]$**.
    - **All Minimal Cut-Sets Matrix ($C(G)$):** Enumerates all minimal cut-sets (matching Week 5 Slide 10 $c_1 \dots c_8$).
    - Verifies the fundamental theorem: **$B_f \cdot Q_f^T \equiv 0 \pmod 2$** (orthogonality of cycle and cut spaces).
